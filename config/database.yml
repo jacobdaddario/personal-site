@@ -11,8 +11,8 @@ default: &default
 development:
   <<: *default
   database: personal-site_development
-  username: jacob
-  password:
+  password: <%= Rails.application.credentials.postgres[:password] %>
+  username: <%= Rails.application.credentials.postgres[:username] %>
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -30,7 +30,7 @@ development:
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  #host: localhost
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -38,8 +38,9 @@ development:
 test:
   <<: *default
   database: personal-site_test
-  username: jacob
-  password:
+  username: <%= Rails.application.credentials.postgres[:username] %>
+  password: <%= Rails.application.credentials.postgres[:password] %>
+  host: localhost
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
