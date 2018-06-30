@@ -13,14 +13,3 @@
  *= require_tree .
  *= require_self
 */
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-h1 {
-  font-family: 'Merriweather', serif;
-}
-
-p {
-  font-family: 'Merriweather Sans' sans-serif;
-}
