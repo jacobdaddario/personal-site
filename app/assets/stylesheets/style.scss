@@ -8,12 +8,12 @@
 // Table of Contents:
 // 1. Shared Styling
 // 2. Home Page
-// 3. Info Page
+// 3. Info Pages
 //
 
 // Shared Styling
 
-h1 {
+h1, h2, h3{
   font-family: 'Merriweather', serif;
 }
 
@@ -23,3 +23,9 @@ p, li {
 
 
 // Home Page Styling
+
+// Used for the Typed.js header
+#typed-header {
+  font-family: 'Merriweather', serif;
+  font-size: 3em
+}

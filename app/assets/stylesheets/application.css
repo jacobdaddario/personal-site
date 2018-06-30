@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
 */
+
+
+/*Creates a base for the calculation of font sizes*/
+html {
+  font-size: calc(0.6em + 1vw);
+}

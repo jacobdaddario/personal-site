@@ -1,2 +1,25 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<%= provide(:title, "Home") %>
+<%= provide(:avatar_url, "#") %>
+<%= provide(:auname, "Jacob Daddario") %>
+<%= provide(:auinfo, "I am a chemical engineer and self-taught programmer who
+                      wrote this site using Ruby on Rails.") %>
+<span id="typed-header"></span>
+<h1>Welcome!</h1>
+<p>
+Welcome to my website! My name is Jacob Daddario, and I built this site using
+the <a href='https://rubyonrails.org/''>Ruby on Rails</a> framework. I am
+currently studying Chemical Engineering at Texas A&M University, and I am a
+self-taught programmer, a skill that I used to design this site. On this site,
+you can find my <a href='/contact'>contact information</a>, a résumé, as well as
+a variety of <a href='#'>blog posts</a> that are categorized by tag. Some of these posts are
+about my projets, others are about learning experiences that I've had, and
+others fall under whatever other categories interest me. That list tends to
+expand quickly, so make sure to click aorund the <a href='#'>blog postings</a> tab and see what
+interests you. If you'd like to learn more about my work expereiences, you can
+find a link to my résumé below.
+</p>
+<%= button_to "My Résumé", '#', class: 'btn btn-primary', disabled: true %>
+<%= render 'shared/author_shim' %>
+
+
+<!-- TODO: Add the dynamically loaded posts shim -->
