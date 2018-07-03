@@ -4,7 +4,6 @@
 // Adds the typing animation to the header of the site.
 var typed = new Typed( "#typed-header", {
   strings: [
-    "I am Jacob Daddario.",
     "I am a chemical engineer.",
     "I am a self-starter.",
     "I am a life-long learner.",

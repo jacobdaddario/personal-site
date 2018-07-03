@@ -545,7 +545,7 @@ GEM
       aws-sdk-workmail (~> 1)
       aws-sdk-workspaces (~> 1)
       aws-sdk-xray (~> 1)
-    aws-sdk-route53 (1.10.0)
+    aws-sdk-route53 (1.10.1)
       aws-sdk-core (~> 3)
       aws-sigv4 (~> 1.0)
     aws-sdk-route53domains (1.3.0)
@@ -594,7 +594,7 @@ GEM
     aws-sdk-sqs (1.4.0)
       aws-sdk-core (~> 3)
       aws-sigv4 (~> 1.0)
-    aws-sdk-ssm (1.16.0)
+    aws-sdk-ssm (1.17.0)
       aws-sdk-core (~> 3)
       aws-sigv4 (~> 1.0)
     aws-sdk-states (1.3.0)
@@ -639,10 +639,6 @@ GEM
     bindex (0.5.0)
     bootsnap (1.3.0)
       msgpack (~> 1.0)
-    bootstrap (4.1.1)
-      autoprefixer-rails (>= 6.0.3)
-      popper_js (>= 1.12.9, < 2)
-      sass (>= 3.5.2)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.3.1)
@@ -704,7 +700,6 @@ GEM
     nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
     pg (1.0.0)
-    popper_js (1.12.9)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
@@ -777,7 +772,7 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.13)
+    uglifier (4.1.14)
       execjs (>= 0.3.0, < 3)
     web-console (3.6.2)
       actionview (>= 5.0)
@@ -795,10 +790,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails (= 8.6.4)
   aws-sdk (~> 3)
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
-  bootstrap (~> 4.1.1)
   byebug
   capybara (>= 2.15, < 4.0)
   chromedriver-helper

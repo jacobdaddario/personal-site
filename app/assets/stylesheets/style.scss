@@ -1,31 +1,104 @@
-// Place all the styles related to the static_pages controller here.
+  // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "bootstrap";
 @import "colors";
 
 //
 // Table of Contents:
 // 1. Shared Styling
 // 2. Home Page
-// 3. Info Pages
+// 3. Contact Page
 //
+// For searching in the stylsheet, ** is at the beginning of every heading
 
-// Shared Styling
+// **1. Shared Styling
+:root {
+  font-size: calc(12px + 1vw);
+}
+
+// No idea why this was a problem
+body {
+  margin: 0;
+}
 
 h1, h2, h3{
   font-family: 'Merriweather', serif;
 }
 
-p, li {
-  font-family: 'Merriweather Sans' sans-serif;
+p, li, a{
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+.button {
+  width: 8.5rem;
+  height: 3rem;
+  border: 2px solid $white;
+  border-radius: 2px;
+  text-align: center;
 }
 
 
-// Home Page Styling
+// **2. Home Page Styling
+#hero-bg {
+  background-image: url('head1.jpg');
+  background-size: cover;
+  background-position: center top;
+  // This bases the text's translation off of the background
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.header-text {
+  color: $white;
+  position: absolute;
+  // width: auto; behaves strangely with the positioning used
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  // This magially centers the text AS the font-size scales. Otherwise could
+  // have used a simpler technique
+  transform: translate(-50%, -50%);
+
+  h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin: 0 0 10px 0;
+  }
+}
+
+#head-button-container {
+  position: static;
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  transform: none;
+  a {
+    padding: 15px;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #head-button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
 // Used for the Typed.js header
 #typed-header {
   font-family: 'Merriweather', serif;
-  font-size: 3em
+  font-size: 1.5rem;
+  color: $white;
 }
+
+#typed-container {
+  text-align: center;
+}
+.typed-cursor {
+  color: $white;
+  font-size: 1.5rem;
+}
+
