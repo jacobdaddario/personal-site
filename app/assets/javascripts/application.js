@@ -13,5 +13,9 @@
 //= require rails-ujs
 //= require jquery3
 //= require activestorage
+// Typed.js allows for the typing animation
 //= require typed.js
+// Modernizr allows for the touch detection. NOTE: Only touch detection is
+// included in this installation of Modernizr
+//= require modernizr-custom.js
 //= require_tree

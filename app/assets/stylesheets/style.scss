@@ -13,7 +13,7 @@
 
 // **1. Shared Styling
 :root {
-  font-size: calc(12px + 1vw);
+  font-size: calc(12px + 0.5vw);
 }
 
 // No idea why this was a problem
@@ -29,14 +29,38 @@ p, li, a{
   font-family: 'Merriweather Sans', sans-serif;
 }
 
-.button {
-  width: 8.5rem;
-  height: 3rem;
-  border: 2px solid $white;
-  border-radius: 2px;
-  text-align: center;
+h1 {
+  font-size: 4.5em;
 }
 
+.button {
+  color: $blue;
+  width: 6rem;
+  height: 2rem;
+  border: 2px solid $blue;
+  border-radius: 8rem;
+  text-align: center;
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+  no-touchevents &:hover {
+    color: $white;
+    background-color: $blue;
+  }
+}
+
+.body {
+  padding: 5em 5em;
+  background-color: $white;
+  color: $dark-blue;
+  a {
+    color: $orange
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .body {
+    padding: 1em;
+  }
+}
 
 // **2. Home Page Styling
 #hero-bg {
@@ -61,7 +85,6 @@ p, li, a{
   transform: translate(-50%, -50%);
 
   h1 {
-    font-size: 4rem;
     text-align: center;
     margin: 0 0 10px 0;
   }
@@ -69,15 +92,31 @@ p, li, a{
 
 #head-button-container {
   position: static;
-  margin: 15px 0;
+  margin: 40px 0;
   display: flex;
   justify-content: center;
   transform: none;
   a {
-    padding: 15px;
+    margin: 1.5rem 30px;
     color: $white;
     text-decoration: none;
   }
+}
+
+.head-button {
+  color: $white;
+  width: 9rem;
+  height: 3rem;
+  border: 2px solid $white;
+  cursor: pointer;
+  .no-touchevents &:hover {
+    background-color: $white;
+    color: $blue;
+  }
+}
+
+#welcome-message {
+  color: $orange;
 }
 
 @media only screen and (max-width: 600px) {

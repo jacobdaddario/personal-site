@@ -20,3 +20,13 @@ var typed = new Typed( "#typed-header", {
   showCursor: true,
   smartBackspace: true
 })
+
+// Scrolls to welcome section on button click
+$(function() {
+  $('#about-button').click( function() {
+    $('.body')[0].scrollIntoView( {
+      behavior: 'smooth',
+      block: 'start'
+    } )
+  } )
+} )
