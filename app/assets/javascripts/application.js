@@ -18,4 +18,5 @@
 // Modernizr allows for the touch detection. NOTE: Only touch detection is
 // included in this installation of Modernizr
 //= require modernizr-custom.js
+//= require zenscroll.js
 //= require_tree

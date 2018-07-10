@@ -21,12 +21,5 @@ var typed = new Typed( "#typed-header", {
   smartBackspace: true
 })
 
-// Scrolls to welcome section on button click
-$(function() {
-  $('#about-button').click( function() {
-    $('.body')[0].scrollIntoView( {
-      behavior: 'smooth',
-      block: 'start'
-    } )
-  } )
-} )
+// Sets up the zenscroll default additional scroll
+zenscroll.setup(null, 50) // only updates edgeOffset to 42
