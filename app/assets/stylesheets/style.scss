@@ -9,9 +9,9 @@
 // 2. Home Page
 // 3. Contact Page
 //
-// For searching in the stylsheet, ** is at the beginning of every heading
+// For searching in the stylsheet, _#_ is at the beginning of every heading
 
-// **1. Shared Styling
+// _1_. Shared Styling
 :root {
   font-size: calc(12px + 0.5vw);
 }
@@ -43,6 +43,7 @@ h1 {
   height: 3rem;
   border: 2px solid $blue;
   border-radius: 8rem;
+  margin: 0 auto;
   text-align: center;
   transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
   .no-touchevents &:hover {
@@ -59,7 +60,7 @@ nav {
   top: 0;
   width: 100%;
   z-index: 1;
-  background-color: $dark-blue;
+  background-color: $blue;
   padding: 10px 0;
 }
 
@@ -83,7 +84,7 @@ nav {
 .nav-hover {
   transition: box-shadow 200ms ease-in-out;
   .no-touchevents &:hover {
-    box-shadow: 0px 3px $dark-blue, 0px 5px $white;
+    box-shadow: 0px 3px $blue, 0px 5px $white;
   }
 }
 
@@ -96,7 +97,7 @@ nav {
   &:hover {
     background-color: $white;
     a {
-      color: $dark-blue;
+      color: $blue;
     }
   }
   a {
@@ -138,7 +139,7 @@ footer {
   width: 100%;
   padding: 20px 0px;
   display: flex;
-  background-color: $dark-blue;
+  background-color: $blue;
   align-items: center;
   justify-content: space-between;
 }
@@ -205,7 +206,7 @@ footer {
   }
 }
 
-// **2. Home Page Styling
+// _2_. Home Page Styling
 #hero-bg {
   background-image: url('head1.jpg');
   background-size: cover;
@@ -311,3 +312,44 @@ footer {
   font-size: 1.5rem;
 }
 
+
+// _3_. Contact Page Styling
+#info-back {
+  background-color: $tan;
+}
+
+.info-container {
+  margin: 2rem;
+  background-color: $white;
+  text-align: center;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-row-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    ". . . ."
+    "h h h h"
+    "c c r r"
+    ". . . .";
+}
+
+.contact-header {
+  color: $dark-blue;
+  grid-area: h;
+}
+
+.contact-info {
+  color: $dark-blue;
+  grid-area: c;
+  p {
+    padding-left: 5rem;
+    text-align: justify;
+  }
+}
+
+.contact-resume {
+  color: $dark-blue;
+  grid-area: r;
+}
+
+// TODO: Add phone responsiveness to this page
