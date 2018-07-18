@@ -1,3 +1,3 @@
-<!-- image_tag yield(:avatar_url), { alt: "Author's Image" } -->
+<%= image_tag yield(:avatar_url), alt: "Author's Image", class: "auth-image" %>
 <%= content_tag :h3, yield(:auname) %>
 <%= content_tag :p, yield(:auinfo) %>

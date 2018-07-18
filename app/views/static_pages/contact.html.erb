@@ -11,10 +11,11 @@
   </div>
   <div class='contact-resume'>
     <h2>My Résumé</h2>
-    <a href='#' class='button-link'>
+    <%= link_to pdfjs.full_path(file: "/resume.pdf"),
+                class: 'button-link' do %>
       <div class='button'>
         <p>My Résumé</p>
       </div>
-    </a>
+    <% end %>
   </div>
 </div>

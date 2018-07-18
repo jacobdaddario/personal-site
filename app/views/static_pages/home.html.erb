@@ -1,5 +1,8 @@
+<!-- TODO: Add a query in the contorller that finds me as the User in this
+section. Calls the urls from the @user attribute -->
+
 <%= provide(:title, "Home") %>
-<%= provide(:avatar_url, "#") %>
+<%= provide(:avatar_url, "jacob_auth.JPG") %>
 <%= provide(:auname, "Jacob Daddario") %>
 <%= provide(:auinfo, "I am a chemical engineer and self-taught programmer who
                       wrote this site using Ruby on Rails.") %>
@@ -26,6 +29,8 @@
     </div>
   </div>
 </header>
+<!-- TODO: Adjust this grid to match what I've learned about sizing text
+     in articles. Can collapse these things out as they go away. -->
 <div id="home-body" class="body">
   <div class="author-shim">
     <%= render 'layouts/author_shim' %>
@@ -45,11 +50,12 @@
     interests you. If you'd like to learn more about my work expereiences, you can
     find a link to my résumé below.
     </p>
-    <a href="#" class="button-link">
+    <%= link_to pdfjs.full_path(file: "/resume.pdf"),
+                class: 'button-link' do %>
       <div class="button">
         <p>My Résumé</p>
       </div>
-    </a>
+    <% end %>
   </div>
 </div>
 
