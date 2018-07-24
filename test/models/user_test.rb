@@ -3,10 +3,16 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   setup do
-    @base = User.create(name: "Joe", email: "joe@gmail.com")
+    @base = User.create(
+                        name: "Joe",
+                        email: "joe@gmail.com",
+                        info: "a" * 255,
+                        avatar: "jacob_auth.JPG"
+                        )
   end
 
   test "accepts a valid user" do
+    assert @base.valid?, "Base user should be valid"
   end
 
   test "denies name already in use" do
@@ -71,20 +77,35 @@ class UserTest < ActiveSupport::TestCase
     @new_base = User.new(name: "Steve Failure", email: "Joe@gmail.com")
     assert_not @new_base.valid?, "App not downcasing email"
     @new_base = User.new(name: "Steve Double-check", email: "check@gmail.com")
-    assert_not @new_base.email == nil,
+    assert_not_equal @new_base.email, nil,
                "App is changing downcased email to nil"
   end
 
   test "denies info that is too long" do
+    assert @base.valid?, "App is limiting info too much"
+    @base.info = "a" * 256
+    assert_not @base.valid?, "App is not limiting info enough"
   end
 
   test "user without info is invalid" do
+    @new_base = User.new(name: "Joe Invalid", email: "example@gmail.com")
+    assert_not @new_base.valid?, "App is not requiring author info"
   end
 
   test "denies user without avatar image" do
+    @new_base = User.new(
+                        name: "Joe Invalid",
+                        email: "example@gmail.com",
+                        info: "a"
+                        )
+    assert_not @new_base.valid?, "App not requiring author image"
   end
 
   test "denies invalid avatar image" do
+    @base.avatar = "jacob_auth"
+    assert_not @base.valid?, "App not requiring proper image extensions"
+    @base.avatar = "asdf.JPG"
+    assert_not @base.valid?, "App not requiring a valid image in the asset path"
   end
 
   # TODO: Add password checks and add association checks
