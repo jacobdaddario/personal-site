@@ -7,7 +7,9 @@ class UserTest < ActiveSupport::TestCase
                         name: "Joe",
                         email: "joe@gmail.com",
                         info: "a" * 255,
-                        avatar: "jacob_auth.JPG"
+                        avatar: "jacob_auth.JPG",
+                        password: "foobar",
+                        password_confirmation: "foobar"
                         )
   end
 
@@ -108,5 +110,14 @@ class UserTest < ActiveSupport::TestCase
     assert_not @base.valid?, "App not requiring a valid image in the asset path"
   end
 
-  # TODO: Add password checks and add association checks
+  test "should have a password present" do
+    @base.password = @base.password_confirmation = " " * 6
+    assert_not @base.valid?, "App not requiring a non-blank password"
+  end
+
+  test "password should be long enough" do
+    @base.password = @base.password_confirmation = "a" * 5
+    assert_not @base.valid?, "App not enforcing password length"
+  end
+
 end

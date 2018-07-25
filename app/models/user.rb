@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_IMAGE_REGEX = /([^\s]+(\.(?i)(jpg|png|gif|bmp))$)/
+
   # Remember that uniqueness can have certain scopes set.
   # Don't forget to index the DB to also check for uniqnuess.
   # Also good for speed, but more important for big sites
@@ -26,12 +27,13 @@ class User < ApplicationRecord
   validates :avatar, presence: true, format: { with: VALID_IMAGE_REGEX }
   validates_with ImageValidator
 
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 }
+
   private
 
   def downcase_email
-    # DANGER, using bang on an already downcased email will return nil
     email.to_s.downcase!
-    # Actually the documentation for this may actually be incorrect
   end
 
 end
