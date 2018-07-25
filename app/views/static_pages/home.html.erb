@@ -1,11 +1,10 @@
 <!-- TODO: Add a query in the contorller that finds me as the User in this
 section. Calls the urls from the @user attribute -->
 
-<%= provide(:title, "Home") %>
-<%= provide(:avatar_url, "jacob_auth.JPG") %>
-<%= provide(:auname, "Jacob Daddario") %>
-<%= provide(:auinfo, "I am a chemical engineer and self-taught programmer who
-                      wrote this site using Ruby on Rails.") %>
+<% provide(:title, "Home") %>
+<% provide(:avatar_url, @user.avatar) %>
+<% provide(:auname, @user.name) %>
+<% provide(:auinfo, @user.info) %>
 
 <header id="hero-bg">
   <div class="header-text">
@@ -46,7 +45,7 @@ section. Calls the urls from the @user attribute -->
     a variety of <a href='#'>blog posts</a> that are categorized by tag. Some of these posts are
     about my projets, others are about learning experiences that I've had, and
     others fall under whatever other categories interest me. That list tends to
-    expand quickly, so make sure to click aorund the <a href='#'>blog postings</a> tab and see what
+    expand quickly, so make sure to click around the <a href='#'>blog postings</a> tab and see what
     interests you. If you'd like to learn more about my work expereiences, you can
     find a link to my résumé below.
     </p>
