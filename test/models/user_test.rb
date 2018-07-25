@@ -39,7 +39,7 @@ class UserTest < ActiveSupport::TestCase
     @base.valid?
     @new_base = @base.dup
     @new_base.name = "Steve"
-    assert_not @new_base.valid?
+    assert_not @new_base.valid?, "App is not denying duplicate"
   end
 
   test "denies email that is too long" do

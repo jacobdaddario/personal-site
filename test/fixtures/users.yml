@@ -1,1 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+base:
+  name: Test
+  email: jake.daddario@gmail.com
+  info: <%= 'a' * 255 %>
+  avatar: jacob_auth.JPG
+  password_digest: <%= BCrypt::Password.create('foobar', cost: 4) %>
