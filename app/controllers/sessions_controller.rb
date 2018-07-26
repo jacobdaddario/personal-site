@@ -5,6 +5,6 @@ class SessionsController < ApplicationController
   def create
   end
 
-  def destry
+  def destroy
   end
 end
