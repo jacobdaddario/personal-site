@@ -16,7 +16,8 @@ section. Calls the urls from the @user attribute -->
     </div>
     <div id="head-button-container" class=header-text>
       <%= button_to "About This Site", '#home-body', class: "button head-button",
-                                       method: :get %>
+                                       id: 'scroll-btn', method: :get, disabled: true %>
+      <!-- TODO: Fix this button so that it works -->
       <%= button_to "Contact Me", contact_path, class: "button head-button",
                                        method: :get %>
     </div>
