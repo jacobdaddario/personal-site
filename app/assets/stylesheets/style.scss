@@ -183,10 +183,8 @@ footer {
 }
 
 .form-container {
-  padding-left: 25%;
-  padding-right: 25%;
-  padding-top: 5%;
-  min-height: 100vh;
+  padding: 15% 25%;
+  min-height: 50vh;
   color: $blue;
 }
 
@@ -222,16 +220,15 @@ label {
 }
 
 .alert {
-  top: 160px;
-  display: block;
+  z-index: 1;
+  top: 120px;
+  position: absolute;
   width: 80%;
   height: 40px;
   padding-top: 20px;
   padding-left: 4rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5rem;
-  margin-bottom: 2rem;
+  margin-left: 10%;
+  margin-right: 10%;
   border-radius: 2px;
   font-family: 'Merriweather Sans', sans-serif;
   font-size: 0.75rem;

@@ -1,6 +1,6 @@
+<% provide :title, "Log In" %>
 <div class='form-container'>
   <h1>Log In</h1>
-  <!-- TODO: Form_for not acting as expected -->
   <%= form_for :session, url: login_path do |f| %>
     <%= f.label :email %>
     <%= f.email_field :email %>
