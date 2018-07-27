@@ -15,16 +15,10 @@ section. Calls the urls from the @user attribute -->
       <span id="typed-header"></span>
     </div>
     <div id="head-button-container" class=header-text>
-      <a href="#home-body" class="button-link">
-        <div class="button head-button">
-          <p>About This Site</p>
-        </div>
-      </a>
-      <a href="/contact" class="button-link">
-        <div class="button head-button">
-          <p>Contact Me</p>
-        </div>
-      </a>
+      <%= button_to "About This Site", '#home-body', class: "button head-button",
+                                       method: :get %>
+      <%= button_to "Contact Me", contact_path, class: "button head-button",
+                                       method: :get %>
     </div>
   </div>
 </header>
@@ -49,12 +43,8 @@ section. Calls the urls from the @user attribute -->
     interests you. If you'd like to learn more about my work expereiences, you can
     find a link to my résumé below.
     </p>
-    <%= link_to pdfjs.full_path(file: "/resume.pdf"),
-                class: 'button-link' do %>
-      <div class="button">
-        <p>My Résumé</p>
-      </div>
-    <% end %>
+    <%= button_to 'My Résumé', pdfjs.full_path(file: "/resume.pdf"), class: 'button',
+                                                        method: :get %>
   </div>
 </div>
 

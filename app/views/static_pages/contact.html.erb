@@ -11,11 +11,7 @@
   </div>
   <div class='contact-resume'>
     <h2>My Résumé</h2>
-    <%= link_to pdfjs.full_path(file: "/resume.pdf"),
-                class: 'button-link' do %>
-      <div class='button'>
-        <p>My Résumé</p>
-      </div>
-    <% end %>
+    <%= button_to 'My Résumé', pdfjs.full_path(file: "/resume.pdf"), class: 'button',
+                                                        method: :get %>
   </div>
 </div>

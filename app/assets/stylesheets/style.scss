@@ -25,7 +25,7 @@ h1, h2, h3 {
   font-family: 'Merriweather', serif;
 }
 
-p, li, a, small {
+p, li, a, small, input, textarea, select, .uneditable-input, label {
   font-family: 'Merriweather Sans', sans-serif;
 }
 
@@ -39,6 +39,8 @@ h1 {
 
 .button {
   color: $blue;
+  font-size: 1rem;
+  background-color: transparent;
   width: 9rem;
   height: 3rem;
   border: 2px solid $blue;
@@ -49,6 +51,7 @@ h1 {
   .no-touchevents &:hover {
     color: $white;
     background-color: $blue;
+    cursor: pointer;
   }
 }
 
@@ -178,12 +181,41 @@ footer {
   font-size: 0.8rem;
 }
 
+.form-container {
+  padding: 15% 25%;
+  min-height: 1vh;
+  color: $blue;
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid $blue;
+  border-radius: 2px;
+  font-size: 1rem;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  color: $blue;
+  .no-touchevents &:focus {
+    outline-color: $orange;
+  }
+}
+
+label {
+  font-size: 1rem;
+}
+
 .debug_dump {
   clear: both;
   box-sizing: border-box;
   float: left;
-  width: 100%;
+  width: auto;
   margin-top: 45px;
+}
+
+.button-form {
+  width: 6rem;
+  height: 2rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -254,16 +286,12 @@ footer {
   display: flex;
   justify-content: center;
   transform: none;
-  a {
-    margin: 1.5rem 30px;
-    color: $white;
-  }
 }
 
 .head-button {
   color: $white;
   border: 2px solid $white;
-  cursor: pointer;
+  margin: 1.5rem 30px;
   .no-touchevents &:hover {
     background-color: $white;
     color: $blue;
