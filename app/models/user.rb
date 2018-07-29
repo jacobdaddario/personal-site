@@ -17,7 +17,7 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_IMAGE_REGEX = /([^\s]+(\.(?i)(jpg|png|gif|bmp))$)/
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   # Remember that uniqueness can have certain scopes set.
   # Don't forget to index the DB to also check for uniqnuess.

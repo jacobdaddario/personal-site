@@ -45,4 +45,9 @@ class PostTest < ActiveSupport::TestCase
     @post.content = '    '
     assert_not @post.valid?, "App not requiring post"
   end
+
+  test "posts should sort by descending order" do
+    @post = posts(:most_recent)
+    assert_equal @post, Post.first, "The app is not sorting the Posts it pulls"
+  end
 end
