@@ -5,7 +5,10 @@
     <div class="nav-listing"><a class="nav-hover" href="/contact">Contact Info</a></div>
     <% if logged_in? %>
       <div class="nav-listing"><a class="nav-hover" href="#">Write Post</a></div>
-      <div class="nav-listing"><a class="nav-hover" href="/logout">Log Out</a></div>
+      <%= content_tag :div,
+                      link_to("Log Out", logout_path, class: 'nav-hover',
+                        method: :delete),
+                      class: 'nav-listing' %>
     <% else %>
       <div class="nav-listing"><a class="nav-hover" href="/login">Log In</a></div>
     <% end %>
