@@ -1,0 +1,13 @@
+<% provide :title, "Write a Post" %>
+<div class='form-container form-container--post'>
+  <h1>Write a Post</h1>
+  <%= form_for @post do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+
+    <%= f.submit "Log In", class: 'button button-form' %>
+  <% end %>
+</div>

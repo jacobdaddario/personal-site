@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def new
-    @post =
+    @user = helpers.current_user
+    @post = @user.posts.build()
   end
 end

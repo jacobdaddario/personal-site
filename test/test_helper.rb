@@ -12,4 +12,15 @@ class ActiveSupport::TestCase
   def is_logged_in?
     !session[:id].nil?
   end
+
+  def current_user?
+    @current_user = User.find(session[:id])
+  end
+
+  def login_write_post
+    get login_url
+    post login_url, params: { session: { email: "jake.daddario@gmail.com", password: "foobar"} }
+    follow_redirect!
+    get new_post_url
+  end
 end

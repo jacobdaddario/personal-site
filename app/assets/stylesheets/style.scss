@@ -188,6 +188,13 @@ footer {
   color: $blue;
 }
 
+.form-container--post {
+  padding-top: 5%;
+  padding-bottom: 15%;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
 input, textarea, select, .uneditable-input {
   border: 1px solid $blue;
   border-radius: 2px;
@@ -200,6 +207,10 @@ input, textarea, select, .uneditable-input {
   .no-touchevents &:focus {
     outline-color: $orange;
   }
+}
+
+textarea {
+  height: 50vh;
 }
 
 label {
