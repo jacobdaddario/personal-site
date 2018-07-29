@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post    '/login',   to: 'sessions#create'
   delete  '/logout',  to: 'sessions#destroy'
 
+  resources :posts
+
   # This route sets up the pdfjs viewer
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
 end
