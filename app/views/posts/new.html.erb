@@ -2,6 +2,8 @@
 <div class='form-container form-container--post'>
   <h1>Write a Post</h1>
   <%= form_for @post do |f| %>
+    <%= render 'posts/error_messages' %>
+
     <%= f.label :title %>
     <%= f.text_field :title %>
 

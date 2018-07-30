@@ -1,20 +1,23 @@
 require 'test_helper'
 
 class WritingPostTest < ActionDispatch::IntegrationTest
-  setup do
-    @user = users(:base)
-  end
-
-  test "log in user and check that a post is building for him" do
-    login_write_post
-    assert_equal @user, current_user?, "App not making post owner current user"
-  end
-
   test "write invalid post and have it redirect" do
     login_write_post
-    post '/posts', params: { session: { title: "Nope", content: '   ' } }
-    assert_template 'posts#new', "App not redirecting to new with error"
-    assert_select 'input', "'   '", "App not retaining content in content field"
-    assert_not flash.empty?, "App not rendering failure flash"
+    assert_no_difference 'Post.count', "App not denying invalid post" do
+      post posts_url, params: { post: { title: "Nope", content: '   ' } }
+    end
+    assert_template 'posts/new', "App not redirecting to new with error"
+    assert_select 'div.alert-danger', message: "Alert div not appearing"
+    assert_select 'div#error_explanation', message: "Error explanation not appearing"
+  end
+
+  test "write valid post and have it redirect" do
+    login_write_post
+    assert_difference 'Post.count', 1, "App not adding post to DB" do
+      post posts_url, params: { post: { title: "Yes", content: 'Yes'} }
+    end
+    follow_redirect!
+    assert_template 'posts/show', "App not redirecting successful posts"
+    assert_not flash.empty?, "App not rendering success flash"
   end
 end
