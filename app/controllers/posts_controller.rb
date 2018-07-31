@@ -12,11 +12,6 @@ class PostsController < ApplicationController
     @posts = Post.all.paginate(page: params[:page], per_page: 30)
   end
 
-  def destroy
-    Post.find(params[:id]).destroy
-    flash[:success] = "Post deleted"
-    redirect_to posts_url
-  end
 
   def new
     @post = helpers.current_user.posts.build
@@ -33,6 +28,25 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update_attributes(post_params)
+      flash[:success] = "Post successfully updated"
+      redirect_to @post
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    Post.find(params[:id]).destroy
+    flash[:success] = "Post deleted"
+    redirect_to posts_url
+  end
 
   private
     # Required to prevent mass assignment

@@ -1,6 +1,6 @@
-<% provide :title, "Write a Post" %>
+<% provide :title, "Edit a Post" %>
 <div class='form-container form-container--post'>
-  <h1>Write a Post</h1>
+  <h1>Edit a Post</h1>
   <%= form_for @post do |f| %>
     <%= render 'posts/error_messages' %>
 
@@ -10,6 +10,6 @@
     <%= f.label :content %>
     <%= f.text_area :content %>
 
-    <%= f.submit "Post", class: 'button button-form' %>
+    <%= f.submit "Edit", class: 'button button-form' %>
   <% end %>
 </div>
