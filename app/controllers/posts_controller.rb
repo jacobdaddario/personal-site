@@ -37,10 +37,6 @@ class PostsController < ApplicationController
       end
     end
 
-    # def build_md_renderer
-    #   renderer = Redcarpet::Render::HTML.new()
-    #   markdown = Redcarpet::Markdown.new(renderer)
-    # end
 
     # I have commented this function out, because I can't figure out how to
     # access foreign keys. Because of how the associations work, I don't know
