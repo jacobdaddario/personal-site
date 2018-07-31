@@ -1,0 +1,18 @@
+<% will_paginate %>
+
+<div class='form-control'>
+  <% @posts.each do |post| %>
+    <div>
+      <%= link_to post, style: 'text-decoration: none;' do %>
+        <%= content_tag(:h2, post.title) %>
+        <%= content_tag(:p, strip_tags(markdown(post.content).truncate_words(25, separator: ' '))) %>
+        <% if logged_in? %>
+          <%= link_to "Delete", post, method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<% will_paginate %>

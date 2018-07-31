@@ -8,6 +8,16 @@ class PostsController < ApplicationController
     @post = Post.find params[:id]
   end
 
+  def index
+    @posts = Post.all.paginate(page: params[:page], per_page: 30)
+  end
+
+  def destroy
+    Post.find(params[:id]).destroy
+    flash[:success] = "Post deleted"
+    redirect_to posts_url
+  end
+
   def new
     @post = helpers.current_user.posts.build
   end
