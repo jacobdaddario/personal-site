@@ -11,8 +11,8 @@ default: &default
 development:
   <<: *default
   database: personal-site_development
-  password: <%= Rails.application.credentials.postgres[:password] %>
   username: <%= Rails.application.credentials.postgres[:username] %>
+  password: <%= Rails.application.credentials.postgres[:password] %>
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
