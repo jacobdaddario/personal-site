@@ -1,4 +1,7 @@
 class Tag < ApplicationRecord
   has_many :taggings
   has_many :posts, through: :taggings
+
+  validates :content, presence: true
+
 end

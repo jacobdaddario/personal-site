@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   def new
     @post = helpers.current_user.posts.build
+    @tags = @post.tags.build
   end
 
   def create
@@ -52,6 +53,19 @@ class PostsController < ApplicationController
     # Required to prevent mass assignment
     def post_params
       params.require(:post).permit(:title, :content)
+    end
+
+    def tag_params
+      params.require(:tag).permit(:content)
+    end
+
+    def separate_tags(tags)
+      array = tags.split
+      array.each do |tag|
+        if Tag.find_by(content: tag)
+
+        end
+      end
     end
 
     def logged_in_user
