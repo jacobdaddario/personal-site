@@ -14,6 +14,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'redcarpet', '>= 3.4.0'
 gem 'jquery-rails', '>= 4.3.3'
 # This sprockets gem works with autoprefixer
+gem 'bootstrap', '~> 4.1.3'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'autoprefixer-rails', '8.6.4'
 gem 'faker', '>= 1.8.7'
