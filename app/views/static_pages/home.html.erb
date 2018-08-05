@@ -7,9 +7,11 @@ section. Calls the urls from the @user attribute -->
 <% provide(:auinfo, @user.info) %>
 
 <div id="hero-bg" class="container-fluid">
-  <% flash.each do |message_type, message| %>
-    <div class="alert alert-<%= message_type %>"><%= message %></div>
-  <% end %>
+  <div class='row py-2'>
+    <% flash.each do |message_type, message| %>
+      <div class="col-12 alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+  </div>
   <div class="row justify-content-center header-text">
     <div class="col-xs-12 col-md-6 text-center">
       <h1 class="header-h1">Jacob Daddario</h1>
