@@ -2,12 +2,14 @@
 <% provide :avatar_url, @post.user.avatar %>
 <% provide :auname, @post.user.name %>
 <% provide :auinfo, @post.user.info %>
-<div class="body">
-  <div class="author-shim">
-    <%= render 'layouts/author_shim' %>
-  </div>
-  <div class="main-content">
-    <%= content_tag :h1, @post.title %>
-    <%= content_tag :p, markdown(@post.content) %>
+<div class="container py-4">
+  <div class='row'>
+    <div class="col-md-3 p-4 h-25 border-right border-secondary">
+      <%= render 'layouts/author_shim' %>
+    </div>
+    <div class='col-md-9'>
+      <%= content_tag :h1, @post.title %>
+      <%= content_tag :p, markdown(@post.content) %>
+    </div>
   </div>
 </div>

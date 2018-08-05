@@ -10,6 +10,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap-will_paginate'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'redcarpet', '>= 3.4.0'
 gem 'popper_js'

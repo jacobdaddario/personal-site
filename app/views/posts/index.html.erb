@@ -1,19 +1,21 @@
-<% will_paginate %>
 
-<div class='form-control'>
+<div class='container py-2'>
+  <%= will_paginate renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-sm pagination-dark' %>
   <% @posts.each do |post| %>
-    <div>
-      <%= link_to post, style: 'text-decoration: none;' do %>
-        <%= content_tag(:h2, post.title) %>
-        <%= content_tag(:p, strip_tags(markdown(post.content).truncate_words(25, separator: ' '))) %>
-        <% if logged_in? %>
-          <%= link_to "Delete", post, method: :delete,
-                      data: { confirm: "Are you sure?" } %>
-          <%= link_to "Edit", edit_post_path(post) %>
+    <div class='row py-2 border-top border-muted'>
+      <div>
+        <%= link_to post, style: 'text-decoration: none;' do %>
+          <%= content_tag(:h2, post.title) %>
+          <%= content_tag(:p, strip_tags(markdown(post.content).truncate_words(25, separator: ' '))) %>
+          <% if logged_in? %>
+            <%= link_to "Delete", post, method: :delete,
+                        data: { confirm: "Are you sure?" }, class: 'btn btn-dark' %>
+            <%= link_to "Edit", edit_post_path(post), class: 'btn btn-dark' %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   <% end %>
+  <% will_paginate %>
 </div>
 
-<% will_paginate %>

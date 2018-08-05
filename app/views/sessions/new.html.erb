@@ -3,11 +3,11 @@
   <h1>Log In</h1>
   <%= form_for :session, url: login_path do |f| %>
     <%= f.label :email %>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, class: 'text-dark' %>
 
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: 'text-dark' %>
 
-    <%= f.submit "Log In", class: 'button button-form' %>
+    <%= f.submit "Log In", class: 'btn btn-dark' %>
   <% end %>
 </div>

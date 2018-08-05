@@ -5,11 +5,11 @@
     <%= render 'posts/error_messages' %>
 
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'text-dark' %>
 
     <%= f.label :content %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, class: 'text-dark' %>
 
-    <%= f.submit "Post", class: 'button button-form' %>
+    <%= f.submit "Post", class: 'btn btn-dark' %>
   <% end %>
 </div>
