@@ -23,10 +23,3 @@ var typed = new Typed( "#typed-header", {
 
 // Sets up the zenscroll default additional scroll
 zenscroll.setup(null, 50) // only updates edgeOffset to 42
-var welcome = document.getElementById("#welcome-message")
-
-$( function() {
-  $('#scroll-btn').click( function() {
-    zenscroll.intoView(welcome)
-  } )
-} )

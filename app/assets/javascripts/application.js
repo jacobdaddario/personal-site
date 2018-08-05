@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require jquery3
-//= require popper
+//= require popper.js
 //= require bootstrap-sprockets
 //= require activestorage
 // Typed.js allows for the typing animation

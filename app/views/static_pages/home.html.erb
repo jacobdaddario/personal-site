@@ -6,47 +6,52 @@ section. Calls the urls from the @user attribute -->
 <% provide(:auname, @user.name) %>
 <% provide(:auinfo, @user.info) %>
 
-<header id="hero-bg">
-  <div class="header-text">
-    <h1>Jacob Daddario</h1>
-    <!-- This div is needed to keep the typed.js animation inline,
-         but blocked away from my name. -->
-    <div id=typed-container>
+<div id="hero-bg" class="container-fluid">
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+  <div class="row justify-content-center header-text">
+    <div class="col-xs-12 col-md-6 text-center">
+      <h1 class="header-h1">Jacob Daddario</h1>
+    </div>
+    <div class='w-100'></div>
+    <div id="typed-container">
       <span id="typed-header"></span>
     </div>
-    <div id="head-button-container" class=header-text>
-      <%= button_to "About This Site", '#home-body', class: "button head-button",
-                                       id: 'scroll-btn', method: :get, disabled: true %>
-      <!-- TODO: Fix this button so that it works -->
-      <%= button_to "Contact Me", contact_path, class: "button head-button",
-                                       method: :get %>
-    </div>
-  </div>
-</header>
-<!-- TODO: Adjust this grid to match what I've learned about sizing text
-     in articles. Can collapse these things out as they go away. -->
-<div id="home-body" class="body">
-  <div class="author-shim">
-    <%= render 'layouts/author_shim' %>
-  </div>
-  <div class="main-content">
-    <h1 id="welcome-message">Welcome!</h1>
-    <p>
-    Welcome to my website! My name is Jacob Daddario, and I built this site using
-    the <a href='https://rubyonrails.org/''>Ruby on Rails</a> framework. I am
-    currently studying Chemical Engineering at Texas A&M University, and I am a
-    self-taught programmer, a skill that I used to design this site. </br> </br> On this site,
-    you can find my <a href='/contact'>contact information</a>, a résumé, as well as
-    a variety of <a href='/posts'>blog posts</a> that are categorized by tag. Some of these posts are
-    about my projets, others are about learning experiences that I've had, and
-    others fall under whatever other categories interest me. That list tends to
-    expand quickly, so make sure to click around the <a href='/posts'>blog postings</a> tab and see what
-    interests you. If you'd like to learn more about my work expereiences, you can
-    find a link to my résumé below.
-    </p>
-    <%= button_to 'My Résumé', pdfjs.full_path(file: "/resume.pdf"), class: 'button',
-                                                        method: :get %>
+    <div class='w-100'></div>
+    <%= link_to '#home-body', class: 'm-4' do %>
+      <div id='scroll-btn' class="btn btn-outline-light">
+        About this Site
+      </div>
+    <% end %>
+    <%= link_to contact_path, class: 'm-4' do %>
+      <div class="btn btn-outline-light">
+        Contact Info
+      </div>
+    <% end %>
   </div>
 </div>
-
-<!-- TODO: Add the dynamically loaded posts shim -->
+<div class='container py-4' style='min-height:100vh;'>
+  <div class='row align-items-center' style='min-height: 100vh;'>
+    <div class="col-md-3 p-4 border-right border-secondary">
+      <%= render 'layouts/author_shim' %>
+    </div>
+    <div id='home-body' class='col-md-9'>
+      <h1 id="welcome-message">Welcome!</h1>
+      <p>
+      Welcome to my website! My name is Jacob Daddario, and I built this site using
+      the <a href='https://rubyonrails.org/''>Ruby on Rails</a> framework. I am
+      currently studying Chemical Engineering at Texas A&M University, and I am a
+      self-taught programmer, a skill that I used to design this site. </br> </br> On this site,
+      you can find my <a href='/contact'>contact information</a>, a résumé, as well as
+      a variety of <a href='/posts'>blog posts</a> that are categorized by tag. Some of these posts are
+      about my projets, others are about learning experiences that I've had, and
+      others fall under whatever other categories interest me. That list tends to
+      expand quickly, so make sure to click around the <a href='/posts'>blog postings</a> tab and see what
+      interests you. If you'd like to learn more about my work expereiences, you can
+      find a link to my résumé below.
+      </p>
+      <%= link_to 'My Résumé', pdfjs.full_path(file: "/resume.pdf"), class: 'btn btn-dark' %>
+    </div>
+  </div>
+</div>

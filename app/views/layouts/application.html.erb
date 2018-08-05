@@ -13,12 +13,16 @@
 
   <body>
     <%= render 'layouts/navbar' %>
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% unless current_page?(root_url) %>
+      <% flash.each do |message_type, message| %>py-2
+        <div class="my-2 alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
     <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
-    <%= debug(params) if Rails.env.development? %>
+    <div class='container-fluid'>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
     <!--This tag is included after HTML is rendered because some of the script
         within rely on the HTML being rendered first. -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

@@ -1,11 +1,13 @@
-<footer>
-  <div class="footer-left">
-    <p class="copyright-notice">
-      Copyright © 2018 by Jacob Daddario
-    </p>
-  </div>
-  <div class="footer-right">
-    <div class="footer-link"><%= link_to "Posts", posts_url %></div>
-    <div class="footer-link"><%= link_to "Contact Info", contact_path %></div>
+<footer class='container'>
+  <div class="row py-4 border-top border-muted">
+    <div class='col-6 col-md-4'>
+      <p>
+        Copyright © 2018 by Jacob Daddario
+      </p>
+    </div>
+    <div class="col-6 col-md-4 offset-md-4 text-right">
+      <div class="footer-link d-inline mx-2"><%= link_to "Posts", posts_url %></div>
+      <div class="footer-link d-inline mx-2"><%= link_to "Contact Info", contact_path %></div>
+    </div>
   </div>
 </footer>

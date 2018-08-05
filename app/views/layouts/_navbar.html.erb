@@ -1,17 +1,20 @@
-<nav>
+<nav class='navbar navbar-expand-md navbar-dark bg-dark'>
   <span id="logo"><a href="/"><strong>JD</strong></a></span>
-  <div class="nav-container">
-    <div class="nav-listing"><a class="nav-hover" href="/posts">Posts</a></div>
-    <div class="nav-listing"><a class="nav-hover" href="/contact">Contact Info</a></div>
-    <% if logged_in? %>
-      <div class="nav-listing"><a class="nav-hover" href="/posts/new">Write Post</a></div>
-      <%= content_tag :div,
-                      link_to("Log Out", logout_path, class: 'nav-hover',
-                        method: :delete),
-                      class: 'nav-listing' %>
-    <% else %>
-      <div class="nav-listing"><a class="nav-hover" href="/login">Log In</a></div>
-    <% end %>
+  <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+    <span class='navbar-toggler-icon'></span>
+  </button>
+
+  <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+    <div class='navbar-nav'>
+      <a class='nav-item nav-link' href="/posts">Posts</a>
+      <a  class='nav-item nav-link' href="/contact">Contact Info</a>
+      <% if logged_in? %>
+        <a  class='nav-item nav-link' href="/posts/new">Write Post</a>
+        <%= link_to "Log Out", logout_path, method: :delete, class: 'nav-item nav-link'  %>
+      <% else %>
+        <a  class='nav-item nav-link' href="/login">Log In</a>
+      <% end %>
+    </div>
   </div>
 </nav>
 
