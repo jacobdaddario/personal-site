@@ -120,10 +120,10 @@ label {
 
 .header-text {
   color: $white;
-  position: absolute;
+  position: relative;
   // width: auto; behaves strangely with the positioning used
   width: 100%;
-  top: 50%;
+  top: 40%;
   left: 50%;
   // This magially centers the text AS the font-size scales. Otherwise could
   // have used a simpler technique
@@ -155,4 +155,27 @@ label {
 .typed-cursor {
   color: $white;
   font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 992px) {
+  .header-text {
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  :root {
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  .form-container {
+    padding: 15% 5%;
+    min-height: 50vh;
+    color: $blue;
+  }
+
 }

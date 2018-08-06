@@ -3,7 +3,7 @@
   <%= will_paginate renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-sm pagination-dark' %>
   <% @posts.each do |post| %>
     <div class='row py-2 border-top border-muted'>
-      <div>
+      <div class='col-12 col-md-9'>
         <%= link_to post, style: 'text-decoration: none;' do %>
           <%= content_tag(:h2, post.title) %>
           <%= content_tag(:p, strip_tags(markdown(post.content).truncate_words(25, separator: ' '))) %>
