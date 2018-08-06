@@ -161,6 +161,13 @@ label {
   .header-text {
     margin: 0 auto;
   }
+
+  .form-container {
+    padding: 15% 5%;
+    min-height: 50vh;
+    color: $blue;
+  }
+
 }
 
 @media only screen and (max-width: 576px) {
@@ -171,11 +178,4 @@ label {
   h1 {
     font-size: 48px;
   }
-
-  .form-container {
-    padding: 15% 5%;
-    min-height: 50vh;
-    color: $blue;
-  }
-
 }
