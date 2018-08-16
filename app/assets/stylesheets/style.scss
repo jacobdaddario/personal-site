@@ -158,7 +158,7 @@ label {
 }
 
 @media only screen and (max-width: 992px) {
-  .header-text {
+  .header-content {
     margin: 0 auto;
   }
 
@@ -179,7 +179,16 @@ label {
     font-size: 32px;
   }
 
+  #typed-header {
+    font-size: 1.25rem;
+  }
+
   .header-text {
+    margin: 0 auto;
+    font-size: 48px
+  }
+
+  .header-content {
     font-size: 48px;
     color: $orange;
   }

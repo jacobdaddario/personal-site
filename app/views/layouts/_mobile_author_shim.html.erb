@@ -1,7 +1,11 @@
-<div class="media">
-  <%= image_tag yield(:avatar_url), alt: "Author's Image", class: "mr-3" %>
-  <div class="media-body">
-    <%= content_tag :h3, yield(:auname), class: 'mt-0' %>
-    <%= content_tag :p, yield(:auinfo) %>
+  <div class='row d-block d-lg-none'>
+    <div class='col border-top border-muted'>
+      <div class="media my-2">
+        <%= image_tag yield(:avatar_url), alt: "Author's Image", class: "mr-2 img-fluid border border-dark", style: "width: 96px; height: 64px;" %>
+        <div class="media-body">
+          <%= content_tag :p, yield(:auname), class: 'my-0 text-muted' %>
+          <%= content_tag :p, yield(:auinfo), class: 'text-muted', style: 'font-size: 10px;' %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
