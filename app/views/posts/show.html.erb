@@ -4,10 +4,10 @@
 <% provide :auinfo, @post.user.info %>
 <div class="container py-4">
   <div class='row'>
-    <div class="d-none d-lg-block col-md-3 p-4 h-25 border-right border-secondary">
+    <div class="d-none d-lg-block col-lg-3 p-4 h-25 border-right border-secondary">
       <%= render 'layouts/author_shim' %>
     </div>
-    <div class='col-md-9'>
+    <div class='col-lg-9'>
       <%= content_tag :h1, @post.title %>
       <%= content_tag :p, markdown(@post.content) %>
     </div>
