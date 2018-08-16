@@ -21,4 +21,5 @@
 // included in this installation of Modernizr
 //= require modernizr-custom.js
 //= require zenscroll.js
+//= require mobile-chrome-vh-fix.js
 //= require_tree

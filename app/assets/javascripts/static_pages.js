@@ -23,3 +23,13 @@ var typed = new Typed( "#typed-header", {
 
 // Sets up the zenscroll default additional scroll
 zenscroll.setup(null, 0) // only updates edgeOffset to 42
+
+// Fixes mobile chrome viewport sizing
+var options = [
+  {
+    selector: '#hero-bg', // Mandatory, CSS selector
+    vh: 100,  // Mandatory, height in vh units
+  },
+];
+
+var vhFix = new VHChromeFix(options);
