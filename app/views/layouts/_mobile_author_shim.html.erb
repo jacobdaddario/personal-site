@@ -1,0 +1,7 @@
+<div class="media">
+  <%= image_tag yield(:avatar_url), alt: "Author's Image", class: "mr-3" %>
+  <div class="media-body">
+    <%= content_tag :h3, yield(:auname), class: 'mt-0' %>
+    <%= content_tag :p, yield(:auinfo) %>
+  </div>
+</div>
