@@ -19,7 +19,7 @@ gem 'jquery-rails', '>= 4.3.3'
 gem 'bootstrap', '~> 4.1.3'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'autoprefixer-rails', '8.6.4'
-gem 'faker', '>= 1.8.7'
+gem 'faker', '~> 1.9.1'
 gem 'will_paginate', '>= 3.1.6'
 gem 'pdfjs_viewer-rails'
 

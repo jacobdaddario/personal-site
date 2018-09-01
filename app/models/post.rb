@@ -6,5 +6,5 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   # Sorts the posts by date created
-  default_scope -> { order(created_at: :desc) }
+  default_scope { order(created_at: :desc) }
 end
