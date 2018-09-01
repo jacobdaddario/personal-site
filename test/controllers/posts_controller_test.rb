@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @post = posts(:orange)
+    @post = posts(:first)
   end
 
   test "redirects logged in user" do

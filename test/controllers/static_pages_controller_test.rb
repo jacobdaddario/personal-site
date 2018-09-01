@@ -17,13 +17,13 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   test "should find author image" do
     get root_url
-    assert_select 'img.auth-image', nil,
+    assert_select 'img.rounded', nil,
                   "Site not fetching author image"
   end
 
   test "should find links to contact on home" do
     get root_url
-    assert_select 'a[href=?]', '/contact', 3,
+    assert_select 'a[href=?]', '/contact', 4,
                   "Contact links are missing"
   end
 end

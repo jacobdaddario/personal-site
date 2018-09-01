@@ -17,6 +17,12 @@ class ActiveSupport::TestCase
     @current_user = User.find(session[:id])
   end
 
+  # Used for functional testing with controller tests
+  def login_as(user)
+    session[:id] = user.id
+  end
+
+  # Used in integration tests
   def login_write_post
     get login_url
     post login_url, params: { session: { email: "jake.daddario@gmail.com", password: "password"} }
