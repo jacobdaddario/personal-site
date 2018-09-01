@@ -4,4 +4,4 @@ base:
   email: jake.daddario@gmail.com
   info: <%= Faker::Lorem.characters(255) %>
   avatar: jacob_auth.JPG
-  password_digest: <%= User.digest("password") %>
+  password_digest: <%= User.digest('password') %>
