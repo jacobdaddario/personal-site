@@ -19,7 +19,7 @@ class ActiveSupport::TestCase
 
   def login_write_post
     get login_url
-    post login_url, params: { session: { email: "jake.daddario@gmail.com", password: "foobar"} }
+    post login_url, params: { session: { email: "jake.daddario@gmail.com", password: "password"} }
     follow_redirect!
     get new_post_url
   end

@@ -16,7 +16,7 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     get login_url
     assert_template 'sessions/new', "App not rendering the new session template"
     post login_path,
-         params: { session: { email: 'jake.daddario@gmail.com', password: 'foobar' } }
+         params: { session: { email: 'jake.daddario@gmail.com', password: 'password' } }
     follow_redirect!
     assert_template 'static_pages/home', "App not redirecting home"
     assert is_logged_in?,
@@ -25,7 +25,7 @@ class UserLoginTest < ActionDispatch::IntegrationTest
                   "App not rendering logout link"
     assert_select 'a[href=?]', '/login', { text: "Log In", count: 0 },
                   "App not removing login link"
-    assert_select 'a.nav-hover', 4, "App not rendering all conditional links"
+    assert_select 'a.nav-item', 4, "App not rendering all conditional links"
     assert_not flash.empty?, "The app is not issuing a success message"
     get root_url
     assert flash.empty?, "The app is not removing the flash on new request"
@@ -34,14 +34,14 @@ class UserLoginTest < ActionDispatch::IntegrationTest
   test 'log in followed by successful log out' do
     get login_url
     post login_path,
-         params: { session: { email: 'jake.daddario@gmail.com', password: 'foobar' } }
+         params: { session: { email: 'jake.daddario@gmail.com', password: 'password' } }
     follow_redirect!
     delete logout_path
     assert_redirected_to root_url, "App not redirecting correctly"
     follow_redirect!
     assert_select 'a[href=?]', '/logout', { text: "Log Out", count: 0 },
                    "App not removing log out"
-    assert_select 'a.nav-hover', 3, "App not rendering conditional links proprely"
+    assert_select 'a.nav-item', 3, "App not rendering conditional links proprely"
     assert_not flash.empty?, "App not rendering logout flash"
     get root_path
     assert flash.empty?, "App not removing flash correctly"
