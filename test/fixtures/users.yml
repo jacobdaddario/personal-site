@@ -2,6 +2,6 @@
 base:
   name: Test
   email: jake.daddario@gmail.com
-  info: <%= 'a' * 255 %>
+  info: <%= Faker::Lorem.characters(255) %>
   avatar: jacob_auth.JPG
-  password_digest: <%= BCrypt::Password.create('foobar', cost: 4) %>
+  password_digest: <%= User.digest("password") %>

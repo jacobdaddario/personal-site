@@ -38,5 +38,14 @@ class User < ApplicationRecord
     email.to_s.downcase!
   end
 
+  # This is a class method stored for organizaton purposes
+  def self.digest(string)
+    # Used to find the minimum cost encryption function
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    # Creates a digest to be used in fixtures
+    BCrypt::Password.create(string, cost: cost)
+  end
+
 end
 
