@@ -3,50 +3,51 @@ require 'test_helper'
 class PostTest < ActiveSupport::TestCase
 
   setup do
-    # Dunno why but active record give a crazy random ID
+    # Associations and integration testing is why good top-down fixtures in
+    # progress
+    @user = users(:base)
     @post = Post.new(title: "Test Article", content: 'a' * 200,
-                     user_id: 11861604)
+                     user_id: @user.id)
   end
 
-  test "post should be valid" do
-    assert @post.valid?, "#{@post.errors.each { |error| puts error }}
-                          prevented valid post"
+  test "accepts a valid post" do
+    assert @post.valid?, "Base post should be valid. #{@post.errors.details}"
   end
 
-  test "post should have a user_id" do
+  test "requires association with user" do
     @post.user_id = "   "
     assert_not @post.valid?, "App not validating association with user"
   end
 
-  test "post should be only numbers" do
+  test "requires correct foreign key" do
     @post.user_id = "blah"
     assert_not @post.valid?, "App not denying only letters in user_id"
     @post.user_id = "12gotcha"
-    assert_not @post.valid?, "App not denying presence of leters at all"
+    assert_not @post.valid?, "App not denying presence of letters at all"
   end
 
-  test "post should require title" do
+  test "requires title" do
     @post.title = '   '
     assert_not @post.valid?, "App not requiring presence of title"
   end
 
-  test "post should require unique title" do
+  test "requires unique title" do
     @post.save
-    @duplicate = @post.dup
-    assert_not @duplicate.valid?, "App not checking for title duplication"
+    duplicate = @post.dup
+    assert_not duplicate.valid?, "App not checking for title duplication"
   end
 
-  test "post should limit title length" do
+  test "title length maximum 80" do
     @post.title = 'a' * 81
     assert_not @post.valid?, "App not limiting title length"
   end
 
-  test "post should require content" do
+  test "requires content" do
     @post.content = '    '
     assert_not @post.valid?, "App not requiring post"
   end
 
-  test "posts should sort by descending order" do
+  test "sorts by descending order" do
     @post = posts(:most_recent)
     assert_equal @post, Post.first, "The app is not sorting the Posts it pulls"
   end
