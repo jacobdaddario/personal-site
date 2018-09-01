@@ -24,29 +24,29 @@ class UserTest < ActiveSupport::TestCase
     assert_not @base.valid?, "App not limiting name length"
   end
 
-  test "user without name is invalid" do
+  test "name required" do
     @base.name = nil
     assert_not @base.valid?, "App not validating user name presence"
   end
 
-  test "denies email already in use" do
+  test "unique email" do
     @base.save
     @new_base = @base.dup
     @new_base.name = "Steve"
     assert_not @new_base.valid?, "App is not denying duplicate"
   end
 
-  test "denies email that is too long" do
+  test "email max length 255" do
     @base.email = "a" * 246 + "@gmail.com"
     assert_not @base.valid?, "App does not consider #{@base.email.length} characters too long"
   end
 
-  test "user without email is invalid" do
+  test "email required" do
     @base.email = nil
     assert_not @base.valid?, "App is not checking for user's email"
   end
 
-  test "email validation should accept valid addresses" do
+  test "accepts valid email addresses" do
     # %w creates a double quote strings inside an array
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
                          first.last@foo.jp alice+bob@baz.cn]
@@ -56,7 +56,7 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test "denies invalid email" do
+  test "denies invalid email address" do
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
                            foo@bar_baz.com foo@bar+baz.com]
     invalid_addresses.each do |address|
@@ -66,39 +66,39 @@ class UserTest < ActiveSupport::TestCase
   end
 
   # This is key to uniqueness actually functioning correctly
-  test "changes the case of the email to lowercase" do
+  test "downcases email before validation" do
     @new_base = User.new(name: "Steve Failure", email: "Jake.daddario@gmail.com")
     assert_not @new_base.valid?, "App not downcasing email"
   end
 
-  test "denies info that is too long" do
+  test "info max length 255" do
     @base.info = "a" * 256
     assert_not @base.valid?, "App is not limiting info enough"
   end
 
-  test "user without info is invalid" do
+  test "info rquired" do
     @base.info = ''
     assert_not @base.valid?, "App is not requiring author info"
   end
 
-  test "denies user without avatar image" do
+  test "requires avatar image" do
     @base.avatar = ''
     assert_not @base.valid?, "App not requiring author image"
   end
 
-  test "denies invalid avatar image" do
+  test "requires valid image" do
     @base.avatar = "jacob_auth"
     assert_not @base.valid?, "App not requiring proper image extensions"
     @base.avatar = "asdf.JPG"
     assert_not @base.valid?, "App not requiring a valid image in the asset path"
   end
 
-  test "should have a password present" do
+  test "requires a password" do
     @base.password = @base.password_confirmation = ' ' * 6
     assert_not @base.valid?, "App not requiring a non-blank password"
   end
 
-  test "password should be long enough" do
+  test "password minimum length 6" do
     @base.password = @base.password_confirmation = 'a' * 5
     assert_not @base.valid?, "App not enforcing password length"
   end
