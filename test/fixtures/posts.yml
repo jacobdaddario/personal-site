@@ -5,8 +5,9 @@ third:
   created_at: <%= 10.minutes.ago %>
   user: base
 
+# For future reference, may be better to not user faker for testing purposes
 first:
-  title: <%= Faker::Beer.name %>
+  title: First
   content: <%= Faker::MichaelScott.quote %>
   created_at: <%= 3.years.ago %>
   user: base

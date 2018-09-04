@@ -2,10 +2,7 @@ require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
 
-  test "should get new" do
-    get login_url
-    assert_response :success
-    assert_select 'title', "Log In - Jacob Daddario", "App not adding title right"
-  end
+  # Don't have any functions checking if these pages give correct responses
+  # since the integration tests would catch this
 
 end

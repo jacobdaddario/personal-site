@@ -19,13 +19,13 @@ class ActiveSupport::TestCase
 
   # Used for functional testing with controller tests
   def login_as(user)
-    session[:id] = user.id
+    post login_url, params: { session: { email: 'jake.daddario@gmail.com', password: "password" } }
   end
 
   # Used in integration tests
   def login_write_post
     get login_url
-    post login_url, params: { session: { email: "jake.daddario@gmail.com", password: "password"} }
+    post login_url, params: { session: { email: "jake.daddario@gmail.com", password: "password" } }
     follow_redirect!
     get new_post_url
   end
