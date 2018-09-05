@@ -10,9 +10,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Post.count', "Server not validating log in" do
       post posts_url, params: { post: { title: "Blah", content: "Blah" } }
     end
-    assert_response :redirect, "App not allowing posts"
-    assert_redirected_to root_url, "Server not redirecting malicious user"
-    assert_not flash.empty?, "Warning flash not rendering"
+    redirects_unlogged_user?
   end
 
   test "require log in to edit" do
@@ -20,9 +18,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       # Though the HTTP is put,Rails still uses Patch and other CRUD conventions
       patch post_path(@post), params: { post: { title: "First", content: "Ha!" } }
     end
-    assert_response :redirect, "App not allowing updates"
-    assert_redirected_to root_url, "Server not redirecting malicious user"
-    assert_not flash.empty?, "Warning flash not rendering"
+    redirects_unlogged_user?
   end
 
   test "loads post with author image" do
@@ -36,5 +32,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       delete post_path(@post)
     end
     assert_not flash.empty?, "Not rendering warning flash"
+  end
+
+  test "loads all posts" do
+    get posts_path
+    assert_select 'div#post', count: 4, message: "App not rendering all articles"
   end
 end

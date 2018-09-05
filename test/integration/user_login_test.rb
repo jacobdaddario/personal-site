@@ -12,9 +12,8 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?, "The flash is not clearing on change"
   end
 
-  test 'should handle valid user sign up' do
+  test 'log in followed by successful log out' do
     get login_url
-    assert_template 'sessions/new', "App not rendering the new session template"
     post login_path,
          params: { session: { email: 'jake.daddario@gmail.com', password: 'password' } }
     follow_redirect!
@@ -29,13 +28,6 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?, "The app is not issuing a success message"
     get root_url
     assert flash.empty?, "The app is not removing the flash on new request"
-  end
-
-  test 'log in followed by successful log out' do
-    get login_url
-    post login_path,
-         params: { session: { email: 'jake.daddario@gmail.com', password: 'password' } }
-    follow_redirect!
     delete logout_path
     assert_redirected_to root_url, "App not redirecting correctly"
     follow_redirect!

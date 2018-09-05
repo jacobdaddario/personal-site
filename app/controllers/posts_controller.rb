@@ -12,7 +12,6 @@ class PostsController < ApplicationController
     @posts = Post.all.paginate(page: params[:page], per_page: 30)
   end
 
-
   def new
     @post = helpers.current_user.posts.build
   end

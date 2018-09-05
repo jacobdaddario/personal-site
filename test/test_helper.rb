@@ -17,16 +17,16 @@ class ActiveSupport::TestCase
     @current_user = User.find(session[:id])
   end
 
-  # Used for functional testing with controller tests
-  def login_as(user)
-    post login_url, params: { session: { email: 'jake.daddario@gmail.com', password: "password" } }
+  def redirects_unlogged_user?
+    assert_response :redirect, "App not allowing posts"
+    assert_redirected_to root_url, "Server not redirecting malicious user"
+    assert_not flash.empty?, "Warning flash not rendering"
   end
 
   # Used in integration tests
-  def login_write_post
+  def log_in_as(user, password)
     get login_url
-    post login_url, params: { session: { email: "jake.daddario@gmail.com", password: "password" } }
+    post login_url, params: { session: { email: user.email, password: password } }
     follow_redirect!
-    get new_post_url
   end
 end

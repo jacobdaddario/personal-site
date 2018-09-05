@@ -2,7 +2,7 @@
 <div class='container py-2'>
   <%= will_paginate renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-sm pagination-dark' %>
   <% @posts.each do |post| %>
-    <div class='row py-2 border-top border-muted'>
+    <div id='post' class='row py-2 border-top border-muted'>
       <div class='col-12 col-md-9'>
         <%= link_to post, style: 'text-decoration: none;' do %>
           <%= content_tag(:h1, post.title, style: 'font-size: 32px;') %>
