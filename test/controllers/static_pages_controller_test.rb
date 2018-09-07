@@ -18,7 +18,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   # Dynamically fetches image. Wanted to double check this
   test "should find author image" do
     get root_url
-    assert_select 'img.rounded', nil,
-                  "Site not fetching author image"
+    # Checks that the controller is assigning users
+    assert assigns[:user]
   end
 end
