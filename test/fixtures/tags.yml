@@ -1,7 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+books:
+  name: books
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+food:
+  name: food
