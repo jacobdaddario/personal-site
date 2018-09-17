@@ -40,4 +40,14 @@ class WritingPostTest < ActionDispatch::IntegrationTest
     assert_template 'posts/show', "App not redirecting successful posts"
     assert_not flash.empty?, "App not rendering success flash"
   end
+
+  test "deletes post and the associated tagging" do
+    assert_difference ['Post.count', 'Tagging.count'], -1, "App not deleting tagging or post" do
+      delete post_path(@post)
+    end
+    follow_redirect!
+    assert_template 'posts/show', "App not properly redirecting"
+    assert_not flash.empty?, "Not rendering success flash"
+  end
+
 end

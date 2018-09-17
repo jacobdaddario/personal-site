@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :taggings, dependent: :destroy
+
   validates :user_id, presence: true, format: { with: /[0-9]*/}
 
   validates :title, presence: true, uniqueness: true, length: { maximum: 80 }
@@ -7,6 +9,4 @@ class Post < ApplicationRecord
 
   # Sorts the posts by date created
   default_scope { order(created_at: :desc) }
-
-  private
 end
