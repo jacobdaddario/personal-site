@@ -3,3 +3,6 @@ books:
 
 food:
   name: food
+
+dogs:
+  name: dogs
