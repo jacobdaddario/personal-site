@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   def create
     # Meant to prevent posts from elsewhere
     @post = helpers.current_user.posts.build post_params
-    if @post.save
+    if @post.save && !(params[:post][:all_tags].empty?)
       flash[:success] = "New post successfully created"
       redirect_to @post
     else
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   private
     # Required to prevent mass assignment
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :all_tags)
     end
 
     def logged_in_user

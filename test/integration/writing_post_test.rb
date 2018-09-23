@@ -9,7 +9,7 @@ class WritingPostTest < ActionDispatch::IntegrationTest
 
   test "write invalid post and have it redirect" do
     assert_no_difference 'Post.count', "App not denying invalid post" do
-      post posts_url, params: { post: { title: "Nope", content: '   ' } }
+      post posts_url, params: { post: { title: "Nope", content: "   ", all_tags: "cats, dogs" } }
     end
     assert_template 'posts/new', "App not redirecting to new with error"
     assert_select 'div.alert-danger', message: "Alert div not appearing"
@@ -18,7 +18,7 @@ class WritingPostTest < ActionDispatch::IntegrationTest
 
   test "write valid post and have it redirect" do
     assert_difference 'Post.count', 1, "App not adding post to DB" do
-      post posts_url, params: { post: { title: "Yes", content: "Yes"} }
+      post posts_url, params: { post: { title: "Yes", content: "Yes", all_tags: "cats, dogs" } }
     end
     follow_redirect!
     assert_template 'posts/show', "App not redirecting successful posts"
@@ -26,14 +26,14 @@ class WritingPostTest < ActionDispatch::IntegrationTest
   end
 
   test "write invalid edited post and have it redirect" do
-    patch post_path(@post), params: { post: { title: "Ooops", content: " " } }
+    patch post_path(@post), params: { post: { title: "Ooops", content: " ", all_tags: "cats, dogs" } }
     assert_template 'posts/edit', "App not redirecting to edit with error"
     assert_select 'div.alert-danger', message: "Alert div not appearing"
     assert_select 'div#error_explanation', message: "Error explanation not appearing"
   end
 
   test "write valid edit and see changes in the db" do
-    patch post_path(@post), params: { post: { title: "Yes", content: "Yeet" } }
+    patch post_path(@post), params: { post: { title: "Yes", content: "Yeet", all_tags: "cats, dogs" } }
     follow_redirect!
     @post.reload
     assert_equal "Yeet", @post.content, "App not updating post qualities"

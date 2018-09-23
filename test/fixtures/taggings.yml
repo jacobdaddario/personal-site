@@ -1,7 +1,7 @@
 base:
   tag: books
-  post: base
+  post: first
 
 second:
   tag: food
-  post: base
+  post: first
