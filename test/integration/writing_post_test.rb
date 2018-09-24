@@ -42,6 +42,7 @@ class WritingPostTest < ActionDispatch::IntegrationTest
     assert_not @post.tags.include?('food'), "App not removing old tag"
     assert_template 'posts/show', "App not redirecting successful posts"
     assert_not flash.empty?, "App not rendering success flash"
+    assert_select 'div#tag', 2, "Tags are not appearing"
   end
 
   test "deletes post and the associated tagging" do
@@ -52,5 +53,4 @@ class WritingPostTest < ActionDispatch::IntegrationTest
     assert_template 'posts/index', "App not properly redirecting"
     assert_not flash.empty?, "Not rendering success flash"
   end
-
 end

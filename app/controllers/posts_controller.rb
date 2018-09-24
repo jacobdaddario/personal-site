@@ -86,8 +86,8 @@ class PostsController < ApplicationController
     end
 
     def edit_in_tags(post)
-      post.all_tags = split_tags(post.all_tags).map { |tag| Tag.find_or_create_by(name: tag) }
-      new_tags = post.all_tags.reject { |tag| post.tagged_by? tag }
+      tag_list = split_tags(post.all_tags).map { |tag| Tag.find_or_create_by(name: tag) }
+      new_tags = tag_list.reject { |tag| post.tagged_by? tag }
       new_tags.each do |tag|
         post.tag_post tag
       end
