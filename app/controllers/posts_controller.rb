@@ -19,7 +19,8 @@ class PostsController < ApplicationController
   def create
     # Meant to prevent posts from elsewhere
     @post = helpers.current_user.posts.build post_params
-    if @post.save && !(params[:post][:all_tags].empty?)
+    if @post.save
+      create_taggings(@post)
       flash[:success] = "New post successfully created"
       redirect_to @post
     else
@@ -65,6 +66,15 @@ class PostsController < ApplicationController
       # Striping any trailing white space from the tag
       tag_array.map!(&:strip)
     end
+
+    def create_taggings(post)
+      tags = split_tags post.all_tags
+      tags.each do |tag|
+        tag = Tag.find_or_create_by(name: tag)
+        post.tag_post(tag)
+      end
+    end
+
     # I have commented this function out, because I can't figure out how to
     # access foreign keys. Because of how the associations work, I don't know
     # if the user_id can actually be sent maliciously through a request

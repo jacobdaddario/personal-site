@@ -8,7 +8,7 @@ class WritingPostTest < ActionDispatch::IntegrationTest
   end
 
   test "write invalid post and have it redirect" do
-    assert_no_difference 'Post.count', "App not denying invalid post" do
+    assert_no_difference 'Post.count', "App not denying invalid post and associated tags" do
       post posts_url, params: { post: { title: "Nope", content: "   ", all_tags: "cats, dogs" } }
     end
     assert_template 'posts/new', "App not redirecting to new with error"
@@ -17,12 +17,13 @@ class WritingPostTest < ActionDispatch::IntegrationTest
   end
 
   test "write valid post and have it redirect" do
-    assert_difference 'Post.count', 1, "App not adding post to DB" do
+    assert_difference ->{ Post.count } => 1, ->{ Tagging.count } => 2, ->{ Tag.count } => 1 do
       post posts_url, params: { post: { title: "Yes", content: "Yes", all_tags: "cats, dogs" } }
     end
     follow_redirect!
     assert_template 'posts/show', "App not redirecting successful posts"
     assert_not flash.empty?, "App not rendering success flash"
+    assert_select 'div.tag', 2, "Tags not appearing"
   end
 
   test "write invalid edited post and have it redirect" do

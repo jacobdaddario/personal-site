@@ -1,7 +1,6 @@
 class Post < ApplicationRecord
   # Required for a virtual attribute to be passsed, even in a form. Can't
-  # be validated on, and has some strange behaviors due to monkey patching.
-  # Doesn't act exactly like a ruby object
+  # be validated on with the built-in Rails methods.
   attribute :all_tags, :string
 
   belongs_to :user
@@ -33,6 +32,6 @@ class Post < ApplicationRecord
   private
 
   def tags_present?
-    errors.add(:all_tags, "Tags must be present.") if self.all_tags.blank?
+    errors.add(:base, "Tags must be present") if self.all_tags.blank?
   end
 end
