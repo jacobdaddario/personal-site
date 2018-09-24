@@ -7,7 +7,7 @@ class PostTest < ActiveSupport::TestCase
     # progress
     @user = users(:base)
     @post = Post.new(title: "Test Article", content: 'a' * 200,
-                     user_id: @user.id)
+                     user_id: @user.id, all_tags: "cat, dog")
   end
 
   test "accepts a valid post" do
@@ -50,5 +50,10 @@ class PostTest < ActiveSupport::TestCase
   test "sorts by descending order" do
     @post = posts(:most_recent)
     assert_equal @post, Post.first, "The app is not sorting the Posts it pulls"
+  end
+
+  test "requires tags" do
+    @post.all_tags = "  "
+    assert_not @post.valid?, "Tags not being required"
   end
 end
