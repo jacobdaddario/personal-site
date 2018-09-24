@@ -37,5 +37,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test "loads all posts" do
     get posts_path
     assert_select 'div#post', count: 4, message: "App not rendering all articles"
+    assert_select 'div#tag', count: 2, message: "App not rendering tags"
   end
 end

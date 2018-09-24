@@ -4,14 +4,21 @@
   <% @posts.each do |post| %>
     <div id='post' class='row py-2 border-top border-muted'>
       <div class='col-12 col-md-9'>
-        <%= link_to post, style: 'text-decoration: none;' do %>
-          <%= content_tag(:h1, post.title, style: 'font-size: 32px;') %>
+        <%= link_to post, style: 'text-decoration: none' do %>
+          <%= content_tag(:h1, post.title, style: 'font-size: 32px; text-decoration: underline') %>
           <%= content_tag(:p, strip_tags(markdown(post.content).truncate_words(25, separator: ' '))) %>
-          <% if logged_in? %>
-            <%= link_to "Delete", post, method: :delete,
-                        data: { confirm: "Are you sure?" }, class: 'btn btn-dark' %>
-            <%= link_to "Edit", edit_post_path(post), class: 'btn btn-dark' %>
+          <% post.tags.each do |tag| %>
+            <%= content_tag :div, tag.name, class: 'btn btn-sm btn-secondary', id: 'tag' %>
           <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-12 col-md-9'>
+        <% if logged_in? %>
+          <%= link_to "Delete", post, method: :delete,
+                      data: { confirm: "Are you sure?" }, class: 'btn btn-dark' %>
+          <%= link_to "Edit", edit_post_path(post), class: 'btn btn-dark' %>
         <% end %>
       </div>
     </div>

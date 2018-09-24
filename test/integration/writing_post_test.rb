@@ -23,7 +23,7 @@ class WritingPostTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'posts/show', "App not redirecting successful posts"
     assert_not flash.empty?, "App not rendering success flash"
-    assert_select 'div.tag', 2, "Tags not appearing"
+    assert_select 'div#tag', 2, "Tags not appearing"
   end
 
   test "write invalid edited post and have it redirect" do
@@ -43,11 +43,11 @@ class WritingPostTest < ActionDispatch::IntegrationTest
   end
 
   test "deletes post and the associated tagging" do
-    assert_difference ['Post.count', 'Tagging.count'], -1, "App not deleting tagging or post" do
+    assert_difference ->{ Post.count } => -1, ->{ Tagging.count } => -2  do
       delete post_path(@post)
     end
     follow_redirect!
-    assert_template 'posts/show', "App not properly redirecting"
+    assert_template 'posts/index', "App not properly redirecting"
     assert_not flash.empty?, "Not rendering success flash"
   end
 

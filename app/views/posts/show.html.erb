@@ -10,6 +10,9 @@
     <div class='col-lg-9'>
       <%= content_tag :h1, @post.title %>
       <%= content_tag :p, markdown(@post.content) %>
+      <% @post.tags.each do |tag| %>
+        <%= content_tag :div, tag.name, class: 'btn btn-dark', id: 'tag' %>
+      <% end %>
     </div>
   </div>
   <%= render 'layouts/mobile_author_shim' %>
