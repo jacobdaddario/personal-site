@@ -60,7 +60,11 @@ class PostsController < ApplicationController
       end
     end
 
-
+    def split_tags(tags)
+      tag_array = tags.split(',')
+      # Striping any trailing white space from the tag
+      tag_array.map!(&:strip)
+    end
     # I have commented this function out, because I can't figure out how to
     # access foreign keys. Because of how the associations work, I don't know
     # if the user_id can actually be sent maliciously through a request

@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  # Required for a virtual attribute to be passsed, even in a form. Can't
+  # be validated on, and has some strange behaviors due to monkey patching.
+  # Doesn't act exactly like a ruby object
   attr_accessor :all_tags
 
   belongs_to :user
@@ -11,4 +14,17 @@ class Post < ApplicationRecord
 
   # Sorts the posts by date created
   default_scope { order(created_at: :desc) }
+
+  def tag_post(tag)
+    tags << tag
+  end
+
+  def untag_post(tag)
+    tags.delete(tag)
+  end
+
+  def tagged_by?(tag)
+    tags.include?(tag)
+  end
+
 end
