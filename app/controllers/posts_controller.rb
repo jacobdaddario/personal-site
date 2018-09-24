@@ -35,6 +35,8 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(post_params)
+      edit_away_tags @post
+      edit_in_tags @post
       flash[:success] = "Post successfully updated"
       redirect_to @post
     else
@@ -72,6 +74,22 @@ class PostsController < ApplicationController
       tags.each do |tag|
         tag = Tag.find_or_create_by(name: tag)
         post.tag_post(tag)
+      end
+    end
+
+    def edit_away_tags(post)
+      old_tags = post.tags.map(&:name).reject { |tag| post.tagging_with? tag }
+      old_tags.each do |tag|
+        tag = Tag.find_by(name: tag)
+        post.untag_post tag
+      end
+    end
+
+    def edit_in_tags(post)
+      post.all_tags = split_tags(post.all_tags).map { |tag| Tag.find_or_create_by(name: tag) }
+      new_tags = post.all_tags.reject { |tag| post.tagged_by? tag }
+      new_tags.each do |tag|
+        post.tag_post tag
       end
     end
 

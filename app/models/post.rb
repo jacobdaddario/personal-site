@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   # Required for a virtual attribute to be passsed, even in a form. Can't
   # be validated on with the built-in Rails methods.
-  attribute :all_tags, :string
+  attribute :all_tags
 
   belongs_to :user
   has_many :taggings, dependent: :destroy
@@ -27,6 +27,10 @@ class Post < ApplicationRecord
 
   def tagged_by?(tag)
     tags.include?(tag)
+  end
+
+  def tagging_with?(tag)
+    all_tags.split(',').map(&:strip).include?(tag)
   end
 
   private

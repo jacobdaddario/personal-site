@@ -34,10 +34,12 @@ class WritingPostTest < ActionDispatch::IntegrationTest
   end
 
   test "write valid edit and see changes in the db" do
-    patch post_path(@post), params: { post: { title: "Yes", content: "Yeet", all_tags: "cats, dogs" } }
+    patch post_path(@post), params: { post: { title: "Yes", content: "Yeet", all_tags: "books, cats" } }
     follow_redirect!
     @post.reload
     assert_equal "Yeet", @post.content, "App not updating post qualities"
+    assert @post.tags.include?(Tag.find_by(name: 'cats')), "App not adding new tag"
+    assert_not @post.tags.include?('food'), "App not removing old tag"
     assert_template 'posts/show', "App not redirecting successful posts"
     assert_not flash.empty?, "App not rendering success flash"
   end
