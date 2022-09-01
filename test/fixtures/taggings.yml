@@ -1,7 +1,0 @@
-base:
-  tag: books
-  post: first
-
-second:
-  tag: food
-  post: first
